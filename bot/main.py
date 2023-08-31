@@ -54,6 +54,11 @@ def list_files_in_directory(directory):
     for file in files:
         print(file)
 
+# Функция GitHub
+def send_github_link(update, context):
+    github_link = "https://github.com/andrewlegkii/resume"
+    update.message.reply_text(f"Вот ссылка на мой GitHub репозиторий: {github_link}")
+
 # Обработчик команды /voice (gpt)
 def send_voice(update, context):
     chat_id = update.message.chat_id
@@ -144,6 +149,7 @@ def main():
     dp.add_handler(CommandHandler("anothervoice", send_another_voice))
     dp.add_handler(CallbackQueryHandler(button))
     dp.add_handler(MessageHandler(Filters.voice, process_voice))
+    dp.add_handler(CommandHandler("github", send_github_link))
 
     updater.start_polling()
     updater.idle()
