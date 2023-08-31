@@ -26,7 +26,9 @@ VoiceBot - это пример бота для Telegram, написанного 
 pip install -r requirements.txt
 ```
 
-2. Запустите бота:
+2. Создайте файл `.env` и запишите там свой токен.
+
+3. Запустите бота:
 
 ```bash
 python main.py
