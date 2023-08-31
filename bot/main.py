@@ -106,6 +106,7 @@ def send_another_voice(update, context):
         else:
             print(f"Voice file not found: {voice_file_path}")
 
+# Функция распознования голосовых команд (недоработано)
 def process_voice(update, context):
     chat_id = update.message.chat_id
     voice_message = update.message.voice
