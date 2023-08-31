@@ -1,10 +1,8 @@
 import logging
 import os
 import speech_recognition as sr
-# import requests
 from telegram import Bot, InputFile, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, MessageHandler, Filters
-# from io import BytesIO
 
 # Токен бота
 TOKEN = '6602648869:AAEx80uLkmGudxzSAZ6TqKg4w9f8szaXuuI'
@@ -113,9 +111,8 @@ def process_voice(update, context):
     voice_message = update.message.voice
 
     if voice_message:
-        # Получаем файл аудиозаписи
         voice_file = context.bot.get_file(voice_message.file_id)
-        voice_file.download('temp_voice.ogg')  # Загружаем аудиозапись на сервер
+        voice_file.download('temp_voice.ogg')
 
         try:
             recognizer = sr.Recognizer()
@@ -127,7 +124,6 @@ def process_voice(update, context):
         except Exception as e:
             context.bot.send_message(chat_id=chat_id, text=f"Ошибка распознавания голоса: {e}")
 
-        # Удаляем временный файл
         os.remove('temp_voice.ogg')
     else:
         context.bot.send_message(chat_id=chat_id, text="Не удалось получить голосовое сообщение.")
