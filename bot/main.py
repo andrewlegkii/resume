@@ -3,9 +3,11 @@ import os
 import speech_recognition as sr
 from telegram import Bot, InputFile, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, MessageHandler, Filters
+from dotenv import load_dotenv
+load_dotenv()
 
-# Токен бота
-TOKEN = '6602648869:AAEx80uLkmGudxzSAZ6TqKg4w9f8szaXuuI'
+# Токен бота (не буду добавлять .env в gitignore для наглядности)
+TOKEN =  os.getenv('TOKEN')
 
 bot = Bot(token=TOKEN)
 
